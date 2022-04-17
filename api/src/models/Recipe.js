@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
     },
 
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
 
@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
 
-    steps: {
+    instructions: {
       type: DataTypes.TEXT
     },
   });
