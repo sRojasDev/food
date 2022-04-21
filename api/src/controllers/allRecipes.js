@@ -1,11 +1,14 @@
-const {getAllRecipes} = require('../controllers/allRecipes')
+const {getRecipes} = require('./getRecipes.js')
 const{Recipe,Diet} = require('../db')
 
 
 
-export const getAllRecipes = async (req,res) =>{
-    const id = req.params.id
-    const allRecipes = await getAllRecipes()
+const getAllRecipes = async (req,res) =>{
+    const allRecipes = await getRecipes();
+    const allDb= await Recipe.findAll();
+   
+        res.status(200).send(allRecipes.concat(allDb));
+    
 
     let validate = id && id.includes("-");           // si tiene - es un UUID
 
@@ -18,17 +21,18 @@ export const getAllRecipes = async (req,res) =>{
         }
     }
     
-else {
-    try {
-        if (id) {
-        let recipeId = await allRecipes.filter((el) => el.id === parseInt(id));
-       // console.log(recipeId);
-        recipeId.length
-            ? res.status(200).send(recipeId)
-            : res.status(400).send("Not fuound");
-        }
-    } catch (err) {
+    else {
+        try {
+            if (id) {
+                let recipeId = await allRecipes.filter((el) => el.id === parseInt(id));
+                // console.log(recipeId);
+                recipeId.length
+                ? res.status(200).send(recipeId)
+                : res.status(400).send("Not fuound");
+            }
+        } catch (err) {
         res.json({ message: err });
     }
 }
 }
+module.exports={getAllRecipes};

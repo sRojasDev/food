@@ -20,15 +20,15 @@ router.post('/', async (req, res) => {
             score,
             healthScore,
             image,
-            instructions,
+            instructions, 
         })
 
         let dietDB = await Diet.findAll({ 
             where: {name: diets}
         })
 
-        if (!name) return res.status(400).send({error: 'Debe ingresar el name para la receta'});
-        if (!summary) return res.status(400).send({error: 'Debe ingresar un summary del receta'});
+        if (!name) return res.status(400).send({error: 'Debe ingresar el nombre'});
+        if (!summary) return res.status(400).send({error: 'Debe ingresar el resumen'});
         // console.log(recipeCreate);
         console.log(dietDB);
         
