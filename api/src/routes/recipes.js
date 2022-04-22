@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         let allRecetas= recetas? recetas.concat(recetasDb): [] ;
         let response= allRecetas.filter(el=>el.title? el.title.toLowerCase().includes(name.toLowerCase()): el.name.toLowerCase().includes(name.toLowerCase()));
         
-        if (response){
+        if (response.length){
             res.status(200).send(response);
         }
         else{
@@ -28,26 +28,6 @@ router.get('/', async (req, res) => {
     return
 })
 
-router.get('/:id', async (req, res) => {
-    let id=req.params.id
-    try{
-    
-        //recupero receta con id de la base de datos
-        if(id && id.includes("-")){
-            const recipe = await Recipe.findByPk(id, {
-            include: Diet
-        });
-        return res.send(recipe);
-        }
-        else{
-            
-        }
-    }
-    catch(err){
-            res.send(`La  ruta con el ID: ${id} Generó un error: ${err.message}`);
-        }
-    res.send(`La  ruta anda perfecto con el ID: ${id}`);
-})
 
 
 module.exports = router
