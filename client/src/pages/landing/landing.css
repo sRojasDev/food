@@ -1,0 +1,17 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.load {
+    border-style: none none none dotted;
+}
+
+@keyframes load {
+    from {
+        border-style: none none none dotted;
+    }
+    to {
+        transform: border-style( none none  dotted none);
+    }
+    
+    
+}
