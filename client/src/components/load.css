@@ -1,0 +1,36 @@
+.loadDiv{
+    border: 4px  rgba(255, 123, 0, 0.8);
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    animation-name: load;
+	animation-duration: 6s;
+	animation-timing-function: ease-out;
+    animation-iteration-count:infinite;
+    transition-duration: 3s;
+    transition-timing-function:linear;
+    
+}
+@keyframes load{
+    0%{
+        transform: rotate(0deg);
+        
+    }
+    3%{
+        border-style: dotted;
+        border-width: 4px;
+    }
+    
+    50%{
+        border-style: dotted;
+        
+    }
+    100%{
+        transform: rotate(360deg);
+        border-left-style: dotted;
+        border-left-color: rgba(255, 123, 0, 0.7);
+        border-top-color: rgba(255, 123, 0, 0.7);
+    }
+}

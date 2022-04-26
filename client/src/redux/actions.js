@@ -1,16 +1,16 @@
 import axios from "axios";
-import {   GET_GAMES, GET_GAME_BY_ID, GET_GAME_BY_NAME, GET_GENRES ,GET_PLAT,URL_BASE  } from "./constantes";
+import {   GET_RECIPES, GET_GAME_BY_ID, GET_RECIPE_BY_NAME, GET_TYPES ,GET_PLAT,URL_BASE , ORDER_ALPHA } from "./constantes";
 
 
 
-export const loadGenres = () => {
+export const loadTypes = () => {
     return async (dispatch) => {
         try {
-            const api = await axios.get(`${URL_BASE}/genres`);
+            const api = await axios.get(`${URL_BASE}/types`);
             const res= api.data;
             console.log("desde actions:");
             return dispatch({
-                type: GET_GENRES,
+                type: GET_TYPES,
                 payload: res,
             })
         }
@@ -18,14 +18,14 @@ export const loadGenres = () => {
     }
 };
 
-export const getAllgames = () => {
+export const getAllrecipes = () => {
     return async (dispatch) => {
         try {
-            const api = await axios.get(`http://localhost:3001/videogames`);
+            const api = await axios.get(`${URL_BASE}/recipes`);
             const res= api.data;
             console.log("desde actions:");
             return dispatch({
-                type: GET_GAMES,
+                type: GET_RECIPES,
                 payload: res,
             })
         }
@@ -53,12 +53,12 @@ export const getById = (id) =>{
 export const getByNames = (name) => {
     return async (dispatch) => {
         try {
-            const api = await axios.get(`http://localhost:3001/videogames?name=${name}`);
+            const api = await axios.get(`${URL_BASE}/recipes?name=${name}`);
             const res= api.data;
             console.log(res);
             
             return dispatch({
-                type: GET_GAME_BY_NAME,
+                type: GET_RECIPE_BY_NAME,
                 payload: res,
             })
         }
@@ -95,4 +95,19 @@ export function postGame(objGame){
         catch (error) { console.log(error) }
     }
     
+    
 }
+
+export const orderAlpha = (way) => {
+    return async (dispatch) => {
+        
+        console.log(`accion ordenar alpha ${way}`);
+    
+        return dispatch({
+            type: ORDER_ALPHA,
+            payload:way,
+        
+        })
+        
+    }
+};

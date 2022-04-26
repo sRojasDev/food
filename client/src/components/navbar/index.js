@@ -3,6 +3,7 @@ import styles from "./navBar.module.css";
 import { useNavigate } from "react-router-dom";
 
 
+
 export const Navbar = () => {
     const location= useLocation();
     let navigate= useNavigate();

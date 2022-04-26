@@ -5,7 +5,7 @@ const axios =require("axios");
 const {APIKEY, APIKEY2 , APIKEY3, APIKEY4} = process.env;
 
 const getByIdApi = async(id) => {
-    const resAxios = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${APIKEY3}&addRecipeInformation=true`);
+    const resAxios = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${APIKEY4}&addRecipeInformation=true`);
                 console.log(resAxios.data);
                 console.log("otro")
                 console.log(resAxios.data)
