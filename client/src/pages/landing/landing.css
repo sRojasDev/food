@@ -3,11 +3,14 @@
 }
 .load {
     border-style: none none none dotted;
+    
 }
-
+.load:hover{
+    border-style: none none dotted dotted;
+}
 @keyframes load {
     from {
-        border-style: none none none dotted;
+        border-style: dotted none none none;
     }
     to {
         transform: border-style( none none  dotted none);

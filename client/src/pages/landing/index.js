@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import restaurant from "../../video/Restaurant.mp4";
 import { useDispatch } from "react-redux";
-import { loadGenres } from "../../redux/actions";
+import { loadTypes } from "../../redux/actions";
 import { useEffect } from "react";
 import styled from 'styled-components';
 import {images} from "../../utils/images/images";
@@ -14,8 +14,9 @@ export const Landing = () => {
     const dispat= useDispatch();
 
     useEffect(() => {
-        dispat(loadGenres());
+        dispat(loadTypes());
     },[dispat]);
+    
     let navigate= useNavigate();
 
     const Container = styled.div`
@@ -51,6 +52,10 @@ const BTNopen= styled.button`
     color:#c9ab85;
     border-radius:50%;
     font-size:2em;
+    cursor:pointer;
+    &::hover{
+        background:#ddd; 
+    }
     
 `
     

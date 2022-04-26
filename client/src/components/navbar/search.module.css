@@ -1,12 +1,13 @@
 .input{
-    background: #00242a;
+    background: #333;
     margin-left:20%;
     width: 80%;
-    border: 2px solid #fff;
+    border: 2px solid #c9ab85;
     border-radius:3px;
     font-size:0.8em;
     font-style: italic;
     color:#fff;
+
 }
 .form{
     display: flex;
@@ -14,4 +15,5 @@
     align-items: center;
     font-size:1.3em;
     font-weight: bold;
+    
 }
