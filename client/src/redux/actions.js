@@ -1,5 +1,5 @@
 import axios from "axios";
-import {   GET_RECIPES, GET_GAME_BY_ID, GET_RECIPE_BY_NAME, GET_TYPES ,GET_PLAT,URL_BASE , ORDER_ALPHA } from "./constantes";
+import {   GET_RECIPES, GET_GAME_BY_ID, GET_RECIPE_BY_NAME, GET_TYPES ,GET_PLAT,URL_BASE , ORDER_ALPHA, ORDER_SCORE, FILTER_BY_TYPE } from "./constantes";
 
 
 
@@ -79,23 +79,16 @@ export const loadCateg = () => {
     }
 };
 
-export function postGame(objGame){
-    return async (dispatch) => {
-        try {
-            const api = await axios.post(`localhost:3001/videogame`, objGame);
-            const res= api.data;
-            console.log(api);
-            console.log("desde post games")
-            console.log(res);
-            return dispatch({
-                type: "POST_GAME",
-                payload: res,
-            })
-        }
-        catch (error) { console.log(error) }
+export function postRecipe(payload) {
+    return async function(dispatch){
+        try{const respuesta= await axios.post("http://localhost:3001/recipe", payload)
+        console.log(respuesta);
+        return respuesta } 
+        catch(err){
+            console.log(err.massage);
+            return false
+        }      
     }
-    
-    
 }
 
 export const orderAlpha = (way) => {
@@ -105,6 +98,33 @@ export const orderAlpha = (way) => {
     
         return dispatch({
             type: ORDER_ALPHA,
+            payload:way,
+        
+        })
+        
+    }
+};
+export const orderScore = (way) => {
+    return async (dispatch) => {
+        
+        console.log(`accion ordenar score ${way}`);
+    
+        return dispatch({
+            type: ORDER_SCORE,
+            payload:way,
+        
+        })
+        
+    }
+};
+
+export const filterByType = (way) => {
+    return async (dispatch) => {
+        
+        console.log(`accion Filtrar x ${way}`);
+    
+        return dispatch({
+            type: FILTER_BY_TYPE,
             payload:way,
         
         })
