@@ -11,7 +11,7 @@ const loadDiets= async()=>{
     console.log(existe);
 
     if(load===false){
-    let diets =['gluten free', 'ketogenic','vegetarian','lacto-vegetarian', 'lacto ovo vegetarian','vegan','pescatarian','paleolithic','primal','whole 30']
+    let diets =['glutenFree', 'ketogenic','vegetarian','lacto-vegetarian', 'lacto ovo vegetarian','vegan','pescatarian','paleolithic','primal','whole 30']
     let i=0;
     diets= diets.map((el)=>{
         i++

@@ -28,7 +28,7 @@ export default function Card({ title,name, diets, score, id, createdDb, img =alt
                 <p>{id}</p>
                 <img className={styled.img} src={img||alterIMG}  alt={`imagen ${name}`} width="100%" /> <br/>
                 <p>{ diets && diets.map(e => e + " / ")|| diets}</p>
-                <p>{score}</p>
+                <p>score:  {score}</p>
             </Link>
         </div>
         

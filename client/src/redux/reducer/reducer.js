@@ -1,6 +1,6 @@
 
 import Ordenar from "../../utils/ordenar.js"
-import { ASC, DSC, GET_RECIPES, GET_GAME_BY_ID, GET_RECIPE_BY_NAME, GET_TYPES, GET_PLAT, ORDER_ALPHA } from "../constantes.js";
+import { ASC, DSC, GET_RECIPES, GET_GAME_BY_ID, GET_RECIPE_BY_NAME, GET_TYPES, GET_PLAT, ORDER_ALPHA, ORDER_SCORE, FILTER_BY_TYPE  } from "../constantes.js";
 
 
 const initialState={
@@ -89,6 +89,42 @@ function rootReducer(state =initialState, action = {}){
                             esperandoFiltro:false,
                             }
                     }
+                    break
+        case ORDER_SCORE:
+            console.log("entró a get ORDER-SCORE reducer")
+                if(action.payload=== "Less"){
+                    let ordMIN= Ordenar(state.allRecipes, ASC, "score")
+                                    return {
+                                        ...state,
+                                        filterRecipes: ordMIN,
+                                        esperandoFiltro:false,
+                                        }
+                                }
+                if(action.payload=== "Top"){
+                    let ordMax= Ordenar(state.allRecipes, DSC, "score")
+                                    return {
+                                        ...state,
+                                        filterRecipes: ordMax,
+                                        esperandoFiltro:false,
+                                        }
+                                }
+                        break 
+        case FILTER_BY_TYPE:
+            console.log(action.payload);
+            let todos= state.allRecipes;
+            console.log(todos.length);
+            let filtrados=todos?.filter(el=> {
+            for(let i=0; i<el.diets.length ;i++ ){
+                if(el.diets[i].name === action.payload){
+                    return el;
+                }
+            }
+            return
+            })
+            return {
+                ...state,
+                filterRecipes: filtrados,
+            }
         default:
             console.log("entro al default reducer");
             console.log("géneros: "+state.types.length);
